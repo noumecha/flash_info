@@ -1,0 +1,8 @@
+name: flash_info
+type: module
+description: info slider config
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - views_ui
