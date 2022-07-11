@@ -24,4 +24,50 @@ class FlashInfo extends StylePluginBase
     /**
      * {@inheritdoc}
      */
+    protected $usesRowPlugin = TRUE;
+
+    /**
+     * custom css for the rows
+     * 
+     * @var bool
+     */
+    protected $usesRowClass = TRUE;
+
+    /**
+     * build form options
+     * {@inheritdoc}
+     * 
+     */
+    public function buildOptionsForm(&$form, FormStateInterface $form_state)
+    {
+        parent::buildOptionsForm($form, $form_state);
+        $form['theme'] = [
+            '#type' => 'select',
+            '#title' => $this->t(' Model '),
+            '#options' => [
+                'top--left' => 'top-left',
+                'top--right' => 'top-right',
+                'bottom--left' => 'bottom--right'
+            ]
+        ];
+        $form['swipe_options'] = [
+            '#type' => 'details',
+            '#title' => $this->t('swipe settings')
+        ];
+        $form['swipe_options']['speed'] = [
+            '#type' => 'number',
+            '#title' => $this->t('vitesse'),
+            '#default_value' => $this->options['swipe_options']['speed']
+        ];
+        $form['swipe_options']['loop'] = [
+            '#type' => 'checkbox',
+            '#title' => $this->t('Loop'),
+            '#default_value' => $this->options['swipe_options']['loop']
+        ];
+    }
+    /**
+     * submittings option from the form 
+     * {@inheritdoc}
+     */
+    
 }
